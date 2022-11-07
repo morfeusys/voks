@@ -17,8 +17,10 @@ module.exports = token => {
         bot.sendMessage(chat_id, "*_Decoding\\.\\.\\. Please wait a bit_* 💬", {parse_mode: "MarkdownV2"}).then(msg => {
             decoder.decode(bot.getFileStream(file_id)).then(result => {
                 if (result) {
+                    console.log(result)
                     bot.editMessageText(result, {chat_id: chat_id, message_id: msg.message_id})
                 } else {
+                    console.log("decoding error")
                     bot.editMessageText("I cannot decode that, sorry...", {chat_id: chat_id, message_id: msg.message_id})
                 }
             })

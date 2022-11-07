@@ -3,7 +3,6 @@ const converter = require('./converter.js')
 
 module.exports = url => {
     function decode(id) {
-        console.log("decoding...")
         return new Promise((resolve, reject) => {
             let ws = new websocket(url)
             ws.on('open', function open() {
@@ -31,7 +30,6 @@ module.exports = url => {
     return {
         decode: stream => {
             return new Promise((resolve, reject) => {
-                console.log("converting...")
                 converter.convert(stream).then((data) => {
                     if (data["state"] === "SUCCESS") {
                         let result = decode(data["id"])
