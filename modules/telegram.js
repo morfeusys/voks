@@ -17,7 +17,7 @@ module.exports = token => {
         bot.sendMessage(chat_id, "*_Decoding\\.\\.\\. Please wait a bit_* 💬", {parse_mode: "MarkdownV2"}).then(msg => {
             decoder.decode(bot.getFileStream(file_id)).then(result => {
                 if (result) {
-                    console.log(result)
+                    console.log(voiceMessage.message_id + " : " + result)
                     bot.deleteMessage(chat_id, msg.message_id)
                     bot.sendMessage(chat_id, result, {
                         reply_to_message_id: voiceMessage.message_id
